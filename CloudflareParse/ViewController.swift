@@ -7,7 +7,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -16,7 +15,12 @@ class ViewController: UIViewController {
         fetchDataFromAPI { result in
             switch result {
             case .success(let responseString):
-                print("\(CFUtils.shared.parseConfigs(data: responseString, docType: "syst"))")
+                let responseJSON = CFUtils.shared.parseConfigs(data: responseString)
+                let dictionaryResp = responseJSON.dictionaryValue
+                for key in dictionaryResp.keys.sorted() {
+                    print(key)
+                }
+                print(responseJSON)
             case .failure(let error):
                 print("Error: \(error)")
                 // Handle the error case here

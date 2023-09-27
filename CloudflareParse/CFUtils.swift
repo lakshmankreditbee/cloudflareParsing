@@ -8,21 +8,30 @@
 import Foundation
 import SwiftyJSON
 
+/**
+ CFUtils is a utility class in Swift that provides methods for parsing JSON data and extracting specific fields based on their types.
+ 
+ The `parseConfigs` method is used to parse JSON data and extract the desired fields. It takes a JSON string as input and returns a JSON object containing the extracted values.
+ 
+ Inputs:
+ - data: A JSON string representing the data to be parsed.
+ 
+ Outputs:
+ - root: A JSON object containing the extracted values from the input data.
+ */
+
 class CFUtils: NSObject {
     
-    let DOCUMENT = "documents"
-    let FIELDS = "fields"
-    let NAME = "name"
-    let STRING_VALUE = "stringValue"
-    let INTEGER_VALUE = "integerValue"
-    let DOUBLE_VALUE = "doubleValue"
-    let BOOLEAN_VALUE = "booleanValue"
-    let MAP_VALUE = "mapValue"
-    let ARRAY_VALUE = "arrayValue"
-    let VALUES = "values"
-    let PRDT = "prdt"
-    let SYST = "syst"
-    let CUST = "cust"
+    private let DOCUMENT = "documents"
+    private let FIELDS = "fields"
+    private let NAME = "name"
+    private let STRING_VALUE = "stringValue"
+    private let INTEGER_VALUE = "integerValue"
+    private let DOUBLE_VALUE = "doubleValue"
+    private let BOOLEAN_VALUE = "booleanValue"
+    private let MAP_VALUE = "mapValue"
+    private let ARRAY_VALUE = "arrayValue"
+    private let VALUES = "values"
     
     static let shared = CFUtils()
     
@@ -30,8 +39,9 @@ class CFUtils: NSObject {
         super.init()
     }
     
-    func parseConfigs(data: String?, docType: String) -> JSON {
+    func parseConfigs(data: String?) -> JSON {
         let root = JSON()
+        
         guard let data = data, !data.isEmpty else {
             return JSON()
         }
@@ -43,24 +53,7 @@ class CFUtils: NSObject {
                 for i in 0..<documentArray!.count {
                     let documentObject = documentArray![i]
                     let documentName = documentObject[NAME].stringValue.split(separator: "/").last?.description
-                    //segregate the response based on the document type i.e., syst, cust, prdt
-                    switch docType {
-                    case SYST:
-                        if let docName = documentName, docName == docType {
-                            return loopThroughFields(documentString: documentName, documentObject: documentObject, root: root)
-                        }
-                    case PRDT:
-                        if let docName = documentName, docName == docType {
-                            return loopThroughFields(documentString: documentName, documentObject: documentObject, root: root)
-                        }
-                    case CUST:
-                        if let docName = documentName, docName == docType {
-                            return loopThroughFields(documentString: documentName, documentObject: documentObject, root: root)
-                        }
-                    default:
-                        print("document not found")
-                        return root
-                    }
+                    return loopThroughFields(documentString: documentName, documentObject: documentObject, root: root)
                 }
             }
         } else {
