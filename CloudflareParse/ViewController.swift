@@ -31,91 +31,91 @@ class ViewController: UIViewController {
             switch result {
             case .success(let responseString):
                 let responseJSON = CFUtils.shared.parseConfigs(data: responseString)
-                let dictionaryResp = responseJSON.dictionaryValue
-                for key in dictionaryResp.keys.sorted() {
+                let configs = responseJSON.dictionaryValue
+                for key in configs.keys.sorted() {
                     switch(key) {
                     case self.WEBVIEW_ERROR:
                         print("--------WEBVIEW_ERROR------")
-                        if let webviewErrorConfig = dictionaryResp[self.WEBVIEW_ERROR] {
+                        if let webviewErrorConfig = configs[self.WEBVIEW_ERROR] {
                             print(webviewErrorConfig)
                         }
                         
                     case self.LOGIN:
                         print("--------LOGIN---------")
-                        if let loginConfig = dictionaryResp[self.LOGIN] {
+                        if let loginConfig = configs[self.LOGIN] {
                             print(loginConfig)
                         }
                         
                         
                     case self.LIVENESS:
                         print("--------LOGIN--------")
-                        if let livenessConfig = dictionaryResp[self.LIVENESS] {
+                        if let livenessConfig = configs[self.LIVENESS] {
                             print(livenessConfig)
                         }
                         
                     case self.LOCALE:
                         print("--------LOCALE--------")
-                        if let localeConfig = dictionaryResp[self.LOCALE] {
+                        if let localeConfig = configs[self.LOCALE] {
                             print(localeConfig)
                         }
                         
                     case self.URLS:
                         print("--------URLS--------")
-                        if let urlsConfig = dictionaryResp[self.URLS] {
+                        if let urlsConfig = configs[self.URLS] {
                             print(urlsConfig)
                         }
                     
                     case self.EVENTS:
                         print("--------EVENTS--------")
-                        if let eventsConfig = dictionaryResp[self.EVENTS] {
+                        if let eventsConfig = configs[self.EVENTS] {
                             print(eventsConfig)
                         }
                         
                     case self.EAADHAAR:
                         print("--------EAADHAAR--------")
-                        if let eaadhaarConfig = dictionaryResp[self.EAADHAAR] {
+                        if let eaadhaarConfig = configs[self.EAADHAAR] {
                             print(eaadhaarConfig)
                         }
                         
                     case self.CONSENT:
                         print("--------CONSENT--------")
-                        if let consentConfig = dictionaryResp[self.CONSENT] {
+                        if let consentConfig = configs[self.CONSENT] {
                             print(consentConfig)
                         }
                         
                     case self.VKYC:
                         print("--------VKYC--------")
-                        if let vkycConfig = dictionaryResp[self.VKYC] {
+                        if let vkycConfig = configs[self.VKYC] {
                             print(vkycConfig)
                         }
                         
                     case self.LOCATION:
                         print("--------LOCATION--------")
-                        if let locationConfig = dictionaryResp[self.LOCATION] {
+                        if let locationConfig = configs[self.LOCATION] {
                             print(locationConfig)
                         }
                         
                     case self.PDDB:
                         print("--------PDDB--------")
-                        if let pddbConfig = dictionaryResp[self.PDDB] {
+                        if let pddbConfig = configs[self.PDDB] {
                             print(pddbConfig)
                         }
                         
                     case self.ENGG:
                         print("--------ENGG--------")
-                        if let enggConfig = dictionaryResp[self.ENGG] {
+                        if let enggConfig = configs[self.ENGG] {
                             print(enggConfig)
                         }
                     
                     case self.FEATURE:
                         print("--------FEATURE--------")
-                        if let featureConfig = dictionaryResp[self.FEATURE] {
+                        if let featureConfig = configs[self.FEATURE] {
                             print(featureConfig)
                         }
                         
                     case self.LOGS:
                         print("--------LOGS--------")
-                        if let logsConfig = dictionaryResp[self.LOGS] {
+                        if let logsConfig = configs[self.LOGS] {
                             print(logsConfig)
                         }
                     
